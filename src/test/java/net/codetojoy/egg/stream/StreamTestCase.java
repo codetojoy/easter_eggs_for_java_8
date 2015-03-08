@@ -38,4 +38,14 @@ public class StreamTestCase {
         assertEquals(2000, result);
     }
     
+    @Test
+    public void testRandomInts() {
+        int lower = 1;
+        int upper = 100;
+        
+        // test ... 1000 random ints in range [lower, upper]
+        IntStream results = new Random().ints(lower, upper+1).limit(1000);
+        
+        results.forEach( i -> assertTrue((lower <= i) && (i <= upper)) );
+    }
 }
