@@ -13,15 +13,15 @@ import java.math.*;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.toList;
 
-// This class contains an integer, i, and its highest prime divisor, v.
+// This class contains an integer, i, and its highest prime divisor, d.
 class F {
-    int v;
+    int d;
     int i;
-    public int getV() { return v; }
+    public int getD() { return d; }
 
     F (int i) {
         this.i = i;
-        v = IntStream.range(2,i + 1)
+        d = IntStream.range(2,i + 1)
                      .map(j -> ( (i % j == 0) && new BigInteger(""+j).isProbablePrime(1)) ? j : 0 )
                      .max()
                      .getAsInt();
@@ -33,7 +33,7 @@ public class SmoothestNumber {
         return IntStream.range(a,b+1)
                         .boxed()
                         .map(F::new)
-                        .sorted(comparingInt(F::getV))
+                        .sorted(comparingInt(F::getD))
                         .collect(toList())
                         .get(0).i;
     }
