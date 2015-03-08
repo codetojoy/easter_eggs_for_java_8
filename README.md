@@ -11,8 +11,8 @@ Most examples are done via tests.
 
 ###### Requirements
 
--- uses Java 8 (surprise!)
--- uses [Gradle](http://gradle.org/)
+* uses Java 8 (surprise!)
+* uses [Gradle](http://gradle.org/)
 
 
 
