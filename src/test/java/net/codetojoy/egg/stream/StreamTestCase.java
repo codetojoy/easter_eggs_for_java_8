@@ -14,6 +14,18 @@ class TimesTen implements UnaryOperator<Integer> {
 
 public class StreamTestCase {
     @Test
+    public void testFilter_EvenIntegers() {
+        int lower = 1;
+        int upper = 100;
+
+        // test ... even ints in range [lower, upper]
+        Stream<Integer> results = IntStream.range(lower, upper+1).boxed().filter(i -> i % 2 == 0);
+
+        List<Integer> list = results.collect(toList());
+        assertEquals(50, (int) list.size());
+    }
+    
+    @Test
     public void testIterate_WithExplicitFunction() {
         Integer i = 2;
         UnaryOperator<Integer> timesTen = new TimesTen();
