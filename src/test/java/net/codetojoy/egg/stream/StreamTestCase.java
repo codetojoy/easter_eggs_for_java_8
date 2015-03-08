@@ -21,6 +21,7 @@ class Foo {
 class Bar {
     private Foo foo;
     public Bar(Foo foo) { this.foo = foo; }
+    public Foo getFoo() { return foo; }
 }
 
 public class StreamTestCase {
@@ -35,6 +36,22 @@ public class StreamTestCase {
         List<Foo> list = results.collect(toList());
         assertEquals(10, (int) list.size());
         assertEquals(1, list.get(0).getValue());
+    }
+
+    @Test
+    public void testMap_CompositeFunctions() {
+        int lower = 1;
+        int upper = 10;
+        
+        Function<Integer,Foo> f1 = i -> new Foo(i);
+        Function<Foo,Bar> f2 = f -> new Bar(f);        
+
+        // test ... map int -> Foo -> Bar
+        Stream<Bar> results = IntStream.range(lower, upper+1).boxed().map( f1.andThen(f2) );
+
+        List<Bar> list = results.collect(toList());
+        assertEquals(10, (int) list.size());
+        assertEquals(1, list.get(0).getFoo().getValue());
     }
     
     @Test
