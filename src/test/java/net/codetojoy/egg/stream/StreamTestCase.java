@@ -6,7 +6,9 @@ import org.junit.*;
 
 import java.util.stream.*;
 import java.util.function.*;
+
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.joining;
 
 class TimesTen implements UnaryOperator<Integer> {
     @Override public Integer apply(Integer n) { return n*10; }
@@ -25,6 +27,16 @@ class Bar {
 }
 
 public class StreamTestCase {
+    @Test
+    public void testJoiningCollector() {
+        List<String> list = Arrays.asList("Mozart", "Bach", "Chopin");
+
+        // test 
+        String result = list.stream().collect(joining(", "));
+
+        assertEquals("Mozart, Bach, Chopin", result);
+    }
+    
     @Test
     public void testMap_Basic() {
         int lower = 1;
