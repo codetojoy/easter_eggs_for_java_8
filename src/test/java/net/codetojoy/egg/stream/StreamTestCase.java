@@ -28,6 +28,17 @@ class Bar {
 
 public class StreamTestCase {
     @Test
+    public void testStringChars_Vowels() {
+        List<Character> vowels = Arrays.asList('a', 'e', 'i', 'o', 'u');
+        String s = "The quick brown fox jumped over the lazy dog.";
+
+        // test ... 'chars' iterates but gives us ints
+        Stream<Character> results = s.chars().mapToObj(i->(char) i).filter(c -> vowels.contains(c)).distinct();
+
+        assertEquals(5, (int) results.collect(toList()).size());
+    }
+    
+    @Test
     public void testJoiningCollector() {
         List<String> list = Arrays.asList("Mozart", "Bach", "Chopin");
 
