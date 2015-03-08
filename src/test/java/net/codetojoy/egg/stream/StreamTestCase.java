@@ -12,7 +12,31 @@ class TimesTen implements UnaryOperator<Integer> {
     @Override public Integer apply(Integer n) { return n*10; }
 }
 
+class Foo {
+    private int value;
+    public Foo(int i) { value = i; }
+    public int getValue() { return value; }
+}
+
+class Bar {
+    private Foo foo;
+    public Bar(Foo foo) { this.foo = foo; }
+}
+
 public class StreamTestCase {
+    @Test
+    public void testMap_Basic() {
+        int lower = 1;
+        int upper = 10;
+
+        // test ... map ints to Foo objects
+        Stream<Foo> results = IntStream.range(lower, upper+1).boxed().map(Foo::new);
+
+        List<Foo> list = results.collect(toList());
+        assertEquals(10, (int) list.size());
+        assertEquals(1, list.get(0).getValue());
+    }
+    
     @Test
     public void testFilter_EvenIntegers() {
         int lower = 1;
