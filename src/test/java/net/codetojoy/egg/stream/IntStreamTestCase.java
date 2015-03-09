@@ -17,7 +17,7 @@ public class IntStreamTestCase {
         // test ... ints in range [lower, upper]
         IntStream results = IntStream.range(lower, upper+1);
         
-        List<Integer> list = results.boxed().distinct().sorted().collect(toList());
+        List<Integer> list = results.boxed().collect(toList());
         int numResults = list.size();
         assertEquals(100, numResults);
         assertEquals(1, (int) list.get(0));
