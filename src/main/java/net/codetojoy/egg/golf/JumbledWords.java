@@ -14,12 +14,11 @@ import static java.util.stream.Collectors.joining;
 public class JumbledWords {
     // return sorted string, all lower-case, no spaces
     String g(String s) {
-        return s.toLowerCase()
-                .chars()
-                .filter(i -> i != 32)
-                .mapToObj(i -> "" + (char) i)
-                .sorted()
-                .collect(joining(""));
+           return s.toLowerCase()
+                   .chars()
+                   .mapToObj(i -> ("" + (char) i).trim())
+                   .sorted()
+                   .collect(joining(""));
     }
     
     // return true if strings are effectively anagrams
