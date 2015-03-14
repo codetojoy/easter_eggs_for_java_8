@@ -2,7 +2,7 @@ package net.codetojoy.egg.golf;
 
 // Do NOT mimic this style in real code! These are solutions for a game called "code golf".
 //
-// See http://codegolf.stackexchange.com/questions/37686/check-the-jumbled-words
+// See http://codegolf.stackexchange.com/questions/47657/print-number-triangle
 //
 // This is pseudo-golfed: it can clearly be condensed into something tighter but I
 // want a mix of brevity and readability.
