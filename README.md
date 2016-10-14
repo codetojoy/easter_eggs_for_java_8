@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/codetojoy/easter_eggs_for_java_8.svg?branch=master)](https://travis-ci.org/codetojoy/easter_eggs_for_java_8)
 
 ###### Introduction
 
